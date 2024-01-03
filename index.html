@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Loading... Collecting the Stars</title>
+        <meta name="description" content="A game about mathematics" />
+        <!-- V20 START-->
+        <style>
+
+            .mainUI
+            {
+                border: 0px solid pink; 
+                position: fixed; 
+                top: 0px;  
+                width:100%; height:100%; 
+                z-index: 1; 
+                pointer-events: none; /* allow click-through in transparent areas */
+                display: flex;
+                align-items: center;
+                  justify-content: center;
+            }
+            
+            .regionUI
+            {
+                border: 0px solid yellow;
+                position: absolute; 
+                display: flex;
+                flex-direction: row;
+                pointer-events: none;
+            }
+            
+            .buttonUI
+            {
+                border: 0px solid lime;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                pointer-events: auto;	
+                filter: drop-shadow(0px 0px 20px white);
+            }
+        </style>
+        <!-- V20 END-->
+        <!--
+        <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+        <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+        -->
+        <!-- V20 START-->
+        <script src="dist/aframe.min.js"></script>
+        <script src="dist/aframe-event-set-component.min.js"></script>
+        <!-- V20 END-->
+        <!--
+        <script src="./assets/scripts/set01.js"></script>
+        <script type="text/javascript" src="./assets/scripts/components.js"></script>
+        -->
+        <!-- V21 START -->
+        <script type="text/javascript" src="./assets/scripts/init.js"></script>
+        <!-- V21 START -->
+        <!-- Sets the color for the loader message -->
+        <style>
+            .a-loader-title {
+                color: white;
+                font-size: 2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- V20 START-->
+        <div class="mainUI" id="uiDiv" oncontextmenu="return false;">
+            <!-- centered -->
+            <div class="regionUI">
+                <div class="buttonUI">
+                <img src="assets/img/enter.png" id="buttonEnter" />
+                </div>
+            </div>
+
+        </div>
+        <!-- V20 END-->
+        <!-- V20 START - ADDED start COMPONENT-->
+        <a-scene id="mainscene" loading-screen="dotsColor: white; backgroundColor: black" cursor="rayOrigin: mouse;" raycaster="objects: .interactive" inspector  start>
+            <!--ASSETS-->
+            <a-assets>
+                <img id="funded" src="./assets/img/EN_Co-fundedbytheEU_RGB_WHITE.png">
+                <img id="intro01" src="./assets/img/intro-screen01.jpeg">
+                <img id="intro02" src="./assets/img/intro-screen02.jpeg">
+                <img id="intro03" src="./assets/img/intro-screen03.jpeg">
+                <img id="intro04" src="./assets/img/intro-screen04.jpeg">
+                <img id="planet01" src="./assets/img/planet01.jpg">
+                <img id="planet02" src="./assets/img/planet02.jpg">
+                <img id="planet03" src="./assets/img/planet03.jpg">
+                <img id="earth" src="./assets/img/earth.jpg">
+                <img id="guardian1" src="./assets/img/guardian1.png">
+                <img id="guardian2" src="./assets/img/guardian2.png">
+                <img id="guardian3" src="./assets/img/guardian3.png">
+                <img id="starflower" src="./assets/img/cosmic-starflower.png">
+                <img id="curvedline" src="./assets/img/p12-curvedline.png">
+                <img id="straightline" src="./assets/img/p12-straightline.png">
+                <img id="dottedline" src="./assets/img/p12-dottedline.png">
+                <img id="circle" src="./assets/img/p12-circle.png">
+                <img id="aligneddots1" src="./assets/img/p15-aligned1.png">
+                <img id="aligneddots2" src="./assets/img/p15-aligned2.png">
+                <img id="aligneddots3" src="./assets/img/p15-aligned3.png">
+                <img id="aligneddotsnot" src="./assets/img/p15-not-aligned.png">
+                <img id="triangleisosceles" src="./assets/img/p21-isoscele.png">
+                <img id="trianglescalene1" src="./assets/img/p21-scaleno1.png">
+                <img id="trianglescalene2" src="./assets/img/p21-scaleno2.png">
+                <img id="trianglescalene3" src="./assets/img/p21-scaleno3.png">
+                <img id="square" src="./assets/img/p22-square.png">
+                <img id="rhombus" src="./assets/img/p25-rhombus.png">
+                <img id="rectangle" src="./assets/img/p25-rectangle.png">
+                <img id="isosceles" src="./assets/img/p31-isoscele.png">
+                <img id="equilateral" src="./assets/img/p31-equilatero.png">
+                <img id="scalene" src="./assets/img/p31-scaleno.png">
+                <img id="parallelogram" src="./assets/img/p34-parallelogramma.png">
+                <img id="rotationsequence" src="./assets/img/rotationsequence.png">
+                <img id="simpleequation360" src="./assets/img/simpleequation360.png">
+                <img id="unitcubes17" src="./assets/img/unitcubes17.png">
+                <img id="trianglesquare" src="./assets/img/trianglesquare.png">
+                <img id="coop" src="./assets/img/coop.png">
+                <img id="airplanecar" src="./assets/img/airplanecar.png">
+                <img id="redtriangle" src="./assets/img/redtriangle.png">
+                <img id="housecircles" src="./assets/img/housecircles.png">
+                <img id="twoapples" src="./assets/img/twoapples.png">
+                <img id="starsquareequations" src="./assets/img/starsquareequations.png">
+                <img id="buckets" src="./assets/img/buckets.png">
+                <img id="housenotcircles" src="./assets/img/housenotcircles.png">
+                <img id="truefalsediagram" src="./assets/img/truefalsediagram.png">
+                <img id="smallpenguin" src="./assets/img/smallpenguin.png">
+                <img id="smallelephant" src="./assets/img/smallelephant.png">
+                <img id="smallpanda" src="./assets/img/smallpanda.png">
+                <img id="divisionring" src="./assets/img/divisionring.png">
+                <img id="smallcircle467" src="./assets/img/smallcircle467.png">
+                <img id="smallcircle437" src="./assets/img/smallcircle437.png">
+                <img id="smallcircle435" src="./assets/img/smallcircle435.png">
+                <img id="fourteenstars" src="./assets/img/fourteenstars.png">
+                <img id="unknown9" src="./assets/img/findunknown9.png">
+                <img id="measuringtools" src="./assets/img/measuringtools.jpg">
+                <img id="rectangle5020" src="./assets/img/rectangle5020.png">
+ 
+                <audio id="clicksound" src="assets/sounds/clicksound.mp3"></audio>
+                <audio id="ambient" src="assets/sounds/Fluffing-a-Duck.mp3" preload="auto"></audio>
+            </a-assets>
+            <!-- END ASSETS -->
+
+            <a-sky color="#000"></a-sky>
+            <!-- SPLASH SCREEN-->
+
+            <a-entity id="ambientSound" sound="src: #ambient; loop: true;"></a-entity>
+
+            <a-camera look-controls>
+            
+
+            <a-plane id="backgroundContainer" material="color: black" width="20" height="10"  position="0 0 -6">
+                <!-- SPLASH SCREEN -->
+                <a-plane id="splashScreen" material="color: black" width="16" height="9" position="0 0 0.1">
+                    <!--Title-->
+                    <a-text font="assets/fonts/Exo2Bold.fnt" value="EXDIGIWORLD'S" position="0 3 0.01" align="center"></a-text>
+
+                    <a-entity
+                        geometry="primitive: plane; width: 16; height: 2"
+                        material="color: black"
+                        text="value: COLLECTING THE STARS; align: center; font: assets/fonts/Exo2Bold.fnt;"
+                        position="0 2 0.01">
+                        <!--CHECK NON BLOCKING ERROR The position attribute is likely to have NaN values??? It looks like it was connected to height="auto"-->
+                    </a-entity>
+
+                    <!-- CONTAINS CITATION FOR THE JINGLE
+                    <a-text position="0 -4 0.01" font="./assets/fonts/Exo2Bold.fnt" align="center" color="white" width="16" value="Fluffing a Duck Kevin MacLeod (incompetech.com) - Licensed under Creative Commons: By Attribution 3.0 License http://creativecommons.org/licenses/by/3.0/ - Music promoted by https://www.chosic.com/free-music/all/"></a-text>
+                    -->
+                   <a-image src="#funded" position="0 -3 0.01" width="4" height="1"></a-image>
+                </a-plane>
+
+                <!--            -->
+                <!-- INTRO STORY-->
+                <a-image id="introScreen" src="#intro01" width="16" height="9" position="0 0 0.1" visible="false">
+                    <a-plane  color="white" width="2.1" height="0.7" position="6.6 -4 0.01" next-slide>
+                        <a-plane id="nextButton"  color="black" width="2" height="0.65" position="0 0 0.01" 
+                        animation__mouseenter="property: components.material.material.color; type: color; to: #333; startEvents: mouseenter; dur: 200";
+                        animation__mouseleave="property: components.material.material.color; type: color; to: black; startEvents: mouseleave; dur: 200";
+                        sound="src: #clicksound; on: click"
+                        >
+                            <a-text id="nextButtonText" value=">>" font="./assets/fonts/Exo2Bold.fnt" align="center"></a-text>                     
+                        </a-plane>
+                    </a-plane> 
+                    <a-plane id="backButtonFrame"  color="white" width="2.1" height="0.7" position="-6.6 -4 0.01" visible="false">
+                        <a-plane id="backButton"  color="black" width="2" height="0.65" position="0 0 0.01" 
+                        animation__mouseenter="property: components.material.material.color; type: color; to: #333; startEvents: mouseenter; dur: 200";
+                        animation__mouseleave="property: components.material.material.color; type: color; to: black; startEvents: mouseleave; dur: 200";
+                        sound="src: #clicksound; on: click"
+                        previous-slide>
+                            <a-text value="<<" font="./assets/fonts/Exo2Bold.fnt" align="center"></a-text>                     
+                        </a-plane>
+                    </a-plane> 
+                </a-image>
+                <!-- INTRO STORY ENDS HERE-->
+
+                <!-- GAME SCREENS START HERE -->
+                <!--          -->
+                <!-- SCOREBAR -->
+                <!--          -->
+                <a-plane id="scorebar" width="16" height="0.4" position="0 4.7 0.11" visible="false" color="black">
+                    <a-text value="Starflowers   >" font="assets/fonts/Exo2Bold.fnt" color="white" position="-5.5 0 0.02" align="right">
+                        <a-plane color="black" width="1.6" height="0.5" position="1 0 -0.001">
+
+                            <a-image id="starflower11" src="#starflower" color="#333"  width="0.3" height="0.3" position="-0.65 0 0.001"></a-image>
+                            <a-image id="starflower12" src="#starflower" color="#333" width="0.3" height="0.3" position="-0.4 0 0.001"></a-image>
+                            <a-image id="starflower13" src="#starflower" color="#333" width="0.3" height="0.3" position="-0.15 0 0.001"></a-image>
+                            <a-image id="starflower14" src="#starflower" color="#333" width="0.3" height="0.3" position="0.1 0 0.001"></a-image>
+                            <a-image id="starflower15" src="#starflower" color="#333" width="0.3" height="0.3" position="0.35 0 0.001"></a-image>
+
+                        </a-plane>
+                        <a-plane color="black" width="1.6" height="0.5" position="2.6 0 -0.001">
+                            <a-image id="starflower21" src="#starflower" color="#333" width="0.3" height="0.3" position="-0.65 0 0.001"></a-image>
+                            <a-image id="starflower22" src="#starflower" color="#333" width="0.3" height="0.3" position="-0.4 0 0.001"></a-image>
+                            <a-image id="starflower23" src="#starflower" color="#333" width="0.3" height="0.3" position="-0.15 0 0.001"></a-image>
+                            <a-image id="starflower24" src="#starflower" color="#333" width="0.3" height="0.3" position="0.1 0 0.001"></a-image>
+                            <a-image id="starflower25" src="#starflower" color="#333" width="0.3" height="0.3" position="0.35 0 0.001"></a-image>
+                        </a-plane>
+                        <a-plane color="black" width="1.6" height="0.5" position="4.2 0 -0.001">
+                            <a-image id="starflower31" src="#starflower" color="#333" width="0.3" height="0.3" position="-0.65 0 0.001"></a-image>
+                            <a-image id="starflower32" src="#starflower" color="#333" width="0.3" height="0.3" position="-0.4 0 0.001"></a-image>
+                            <a-image id="starflower33" src="#starflower" color="#333" width="0.3" height="0.3" position="-0.15 0 0.001"></a-image>
+                            <a-image id="starflower34" src="#starflower" color="#333" width="0.3" height="0.3" position="0.1 0 0.001"></a-image>
+                            <a-image id="starflower35" src="#starflower" color="#333" width="0.3" height="0.3" position="0.35 0 0.001"></a-image>
+                        </a-plane>
+                    </a-text>
+                </a-plane>
+                <!-- STARFLOWERS-->
+                <a-image class="starflower" src="#starflower" scale="0.5 0.5 1" position="-6.25 2.0 0.13" visible="false"></a-image>
+                <a-image class="starflower" src="#starflower" scale="0.5 0.5 1" position="-5.42 1.82 0.13" visible="false"></a-image>
+                <a-image class="starflower" src="#starflower" scale="0.5 0.5 1" position="-6.025 1.27 0.13" visible="false"></a-image>
+                <a-image class="starflower" src="#starflower" scale="0.5 0.5 1" position="-6.734 0.6 0.13" visible="false"></a-image>
+                <a-image class="starflower" src="#starflower" scale="0.5 0.5 1" position="-6 0.15 0.13" visible="false"></a-image>
+                <!--          -->
+                <!-- PLANET 1-->
+                <!--         -->
+                <a-image id="planet1" src="#planet01" width="12" height="7" position="0 0 0.01" visible="false">
+                    <!-- PLANET 1 LANDING-->
+                    <a-plane id="planet1-name" color="black" width="4" height="0.4" position="4 4.7 0.12" visible="true">
+                        <a-text font="assets/fonts/Exo2Bold.fnt" value="PLANET 1: THE GEOMETRIC OUTPOST" color="white" position="0 0 0.01" align="center"></a-text>
+                    </a-plane>
+                    <a-image id="planet1-guardian" src="#guardian1" scale="2 2 1" position="-7.2 2.8 0.01">
+                        <a-text font="assets/fonts/Exo2Bold.fnt" value="I am Tim Boo Ba the Linear,\nGuardian of the Geometric Outpost.\n Are you ready for my challenges?" color="#FFFFFF" position="0.2 0.3 0.01" align="left" scale="0.75 0.75 1"></a-text>
+                        <a-plane  color="white" scale="0.4 0.4 1" width="3.1" height="1.1" position="3.472 -2.37 0.01">
+                            <a-plane id="toChallengep11"  color="red" width="3" height="1" position="0 0 0.01" 
+                            animation__mouseenter="property: components.material.material.color; type: color; to: #333; startEvents: mouseenter; dur: 200";
+                            animation__mouseleave="property: components.material.material.color; type: color; to: black; startEvents: mouseleave; dur: 200";
+                            sound="src: #clicksound; on: click"   
+                            >
+                                <a-text value="I AM READY!" font="./assets/fonts/Exo2Bold.fnt" align="center" scale="1.5 1.5 1"></a-text>                     
+                            </a-plane>
+                        </a-plane>
+                    </a-image>
+                    
+                    
+                    <!-- PLANET 1 CHALLENGES -->
+                    <a-plane id="planetOneChallenges" width="0.01" height="0.01" position="0 -2 0.01">
+                        <!------------>
+                        <!-- CHALLENGES ARE APPENDED HERE BY the challenge-costructor component -->
+                        <!------------>
+                        <a-entity id="challengep11"></a-entity>
+                        <a-entity id="challengep12"></a-entity>
+                        <a-entity id="challengep13"></a-entity>
+                        <a-entity id="challengep14"></a-entity>
+                        <a-entity id="challengep15"></a-entity>
+                        <!-- PLANET 1 REWARDS SCENE -->
+                        <a-image id="rewardsPlanet1" src="#guardian1" scale="2 2 1" position="-7.2 4.8 0.01" visible="false">
+                            <a-text font="assets/fonts/Exo2Bold.fnt" value="Cheers!\nYou mastered my challenges.\nHere five starflowers for you!\nHead to the Polygon Plaza planet\nto get more!" color="#FFFFFF" position="0.2 0.3 0.01" align="left" scale="0.75 0.75 1"></a-text>
+                            <a-plane  color="white" scale="0.4 0.4 1" width="3.1" height="1.1" position="3.472 -2.37 0.01">
+                                <a-plane id="gotoPlanet2Button"  color="red" width="3" height="1" position="0 0 0.01" 
+                                animation__mouseenter="property: components.material.material.color; type: color; to: #333; startEvents: mouseenter; dur: 200";
+                                animation__mouseleave="property: components.material.material.color; type: color; to: black; startEvents: mouseleave; dur: 200";
+                                sound="src: #clicksound; on: click"
+                                >
+                                    <a-text value="ON MY WAY!" font="./assets/fonts/Exo2Bold.fnt" align="center" scale="1.5 1.5 1"></a-text>                     
+                                </a-plane>
+                            </a-plane>
+                        </a-image>
+
+                        <!-- RESTART IN CASE OF WRONG ANSWER-->
+                        <a-plane id="restartPlanet1" color="red" width="1.6" height="0.9" position="0 0 0.1"  visible="false">
+                            <a-plane color="white" width="12" height="4.6" position="0 0 -0.01"></a-plane>
+                            <a-text value="Restart" font="assets/fonts/Exo2Bold.fnt" align="center" scale="1.5 1.5 1"></a-text>
+                            <a-text value="Oh no!!\nYour answer is wrong!\nNow you have to start again." font="assets/fonts/Exo2Bold.fnt" color="red" position="0 1.5 0" align="center" scale="1.5 1.5 1"></a-text>
+                        </a-plane>
+
+                    </a-plane><!-- END OF CHALLENGES-->
+                </a-image>
+                <!--         -->
+                <!-- PLANET 2-->
+                <!--         -->
+                <a-image id="planet2" src="#planet02" width="16" height="9" position="0 0 0.1" visible="false">
+                    <a-plane id="planet2-name" color="black" width="4" height="0.4" position="4 4.7 0.12" visible="true">
+                        <a-text font="assets/fonts/Exo2Bold.fnt" value="PLANET 2: THE POLYGON PLAZA" color="white" position="0 0 0.01" align="center"></a-text>
+                    </a-plane>
+                    <a-image id="planet2-guardian" src="#guardian2" scale="2 2 1" position="-7.2 3 0.01">
+                        <a-text font="assets/fonts/Exo2Bold.fnt" value="I am Trantor the Multiangular,\nGuardian of the Polygon Plaza.\n Are you ready for my challenges?" color="#FFFFFF" position="0.2 0.3 0.01" align="left" scale="0.75 0.75 1"></a-text>
+                        <a-plane  color="white" scale="0.4 0.4 1" width="3.1" height="1.1" position="3.472 -2.37 0.01">
+                            <a-plane id="toChallengep21"  color="red" width="3" height="1" position="0 0 0.01" 
+                            animation__mouseenter="property: components.material.material.color; type: color; to: #333; startEvents: mouseenter; dur: 200";
+                            animation__mouseleave="property: components.material.material.color; type: color; to: black; startEvents: mouseleave; dur: 200";
+                            sound="src: #clicksound; on: click"
+                            >
+                                <a-text value="I AM READY!" font="./assets/fonts/Exo2Bold.fnt" align="center" scale="1.5 1.5 1"></a-text>                     
+                            </a-plane>
+                        </a-plane>
+                    </a-image>
+
+
+                    <!-- CHALLENGES-->
+                    <a-plane id="planetTwoChallenges" width="0.01" height="0.01" position="0 -2 0.01">
+                        <!------------>
+                        <!-- CHALLENGES ARE APPENDED HERE BY the challenge-costructor component -->
+                        <!------------>
+                        <a-entity id="challengep21"></a-entity>
+                        <a-entity id="challengep22"></a-entity>
+                        <a-entity id="challengep23"></a-entity>
+                        <a-entity id="challengep24"></a-entity>
+                        <a-entity id="challengep25"></a-entity>
+
+                        <!-- PLANET 2 REWARDS SCENE -->
+                        <a-image id="rewardsPlanet2" src="#guardian2" scale="2 2 1" position="-7.2 4.8 0.01" visible="false">
+                            <a-text font="assets/fonts/Exo2Bold.fnt" value="Cheers!\nYou mastered my challenges.\nHere five starflowers for you!\nHead to the Shape Citadel planet\nto get more!" color="#FFFFFF" position="0.2 0.3 0.01" align="left" scale="0.75 0.75 1"></a-text>
+                            <a-plane  color="white" scale="0.4 0.4 1" width="3.1" height="1.1" position="3.472 -2.37 0.01">
+                                <a-plane id="gotoPlanet3Button"  color="red" width="3" height="1" position="0 0 0.01" 
+                                animation__mouseenter="property: components.material.material.color; type: color; to: #333; startEvents: mouseenter; dur: 200";
+                                animation__mouseleave="property: components.material.material.color; type: color; to: black; startEvents: mouseleave; dur: 200";
+                                sound="src: #clicksound; on: click"
+                                >
+                                    <a-text value="ON MY WAY!" font="./assets/fonts/Exo2Bold.fnt" align="center" scale="1.5 1.5 1"></a-text>                     
+                                </a-plane>
+                            </a-plane>
+                        </a-image>
+
+                        <!--Reset Planet 2 after wrong answer-->
+                        <a-plane id="restartPlanet2" color="red" width="1.6" height="0.9" position="0 0 0.1"  visible="false">
+                            <a-plane color="white" width="12" height="4.6" position="0 0 -0.01"></a-plane>
+                            <a-text value="Restart" font="assets/fonts/Exo2Bold.fnt" align="center" scale="1.5 1.5 1"></a-text>
+                            <a-text value="Oh no!!\nYour answer is wrong!\nNow you have to start again." font="assets/fonts/Exo2Bold.fnt" color="red" position="0 1.5 0" align="center" scale="1.5 1.5 1"></a-text>
+                        </a-plane>
+                    </a-plane> <!-- END OF CHALLENGES-->
+                    
+                </a-image>
+                <!--         -->
+                <!-- PLANET 3-->
+                <!--         -->
+                <a-image id="planet3" src="#planet03" width="12" height="7" position="0 0 0.1" visible="false">
+                    <a-plane id="planet3-name" color="black" width="4" height="0.4" position="4 4.7 0.12" visible="true">
+                        <a-text font="assets/fonts/Exo2Bold.fnt" value="PLANET 3: THE SHAPE CITADEL" color="white" position="0 0 0.01" align="center"></a-text>
+                    </a-plane>
+                    <a-image id="planet3-guardian" src="#guardian3" scale="2 2 1" position="-7.2 3 0.01">
+                        <a-text font="assets/fonts/Exo2Bold.fnt" value="I am Shoggoth the Fit,\nGuardian of the Shape Citadel.\n Are you ready\nfor my challenges?" color="#FFFFFF" position="0.2 0.3 0.01" align="left" scale="0.75 0.75 1"></a-text>
+                        <a-plane  color="white" scale="0.4 0.4 1" width="3.1" height="1.1" position="3.472 -2.37 0.01">
+                            <a-plane id="toChallengep31"  color="red" width="3" height="1" position="0 0 0.01" 
+                            animation__mouseenter="property: components.material.material.color; type: color; to: #333; startEvents: mouseenter; dur: 200";
+                            animation__mouseleave="property: components.material.material.color; type: color; to: black; startEvents: mouseleave; dur: 200";
+                            sound="src: #clicksound; on: click"
+                            >
+                                <a-text value="I AM READY!" font="./assets/fonts/Exo2Bold.fnt" align="center" scale="1.5 1.5 1"></a-text>                     
+                            </a-plane>
+                        </a-plane>
+                    </a-image>
+                    <!-- CHALLENGES-->
+                    <a-plane id="planetThreeChallenges" width="0.01" height="0.01" position="0 -2 0.01">
+                        <!------------>
+                        <!-- CHALLENGES ARE APPENDED HERE BY the challenge-costructor component -->
+                        <!------------>
+                        <a-entity id="challengep31"></a-entity>
+                        <a-entity id="challengep32"></a-entity>
+                        <a-entity id="challengep33"></a-entity>
+                        <a-entity id="challengep34"></a-entity>
+                        <a-entity id="challengep35"></a-entity>
+
+                        <!-- PLANET 3 REWARDS SCENE -->
+                        <a-image id="rewardsPlanet3" src="#guardian3" scale="2 2 1" position="-7.2 4.8 0.01" visible="false">
+                            <a-text font="assets/fonts/Exo2Bold.fnt" value="Cheers!\nYou mastered my challenges.\nHere five starflowers for you!\nHead to the Earth\nto save it!" color="#FFFFFF" position="0.2 0.3 0.01" align="left" scale="0.75 0.75 1"></a-text>
+                            <a-plane  color="white" scale="0.4 0.4 1" width="3.1" height="1.1" position="3.472 -2.37 0.01">
+                                <a-plane id="gotoEarthButton"  color="red" width="3" height="1" position="0 0 0.01" 
+                                animation__mouseenter="property: components.material.material.color; type: color; to: #333; startEvents: mouseenter; dur: 200";
+                                animation__mouseleave="property: components.material.material.color; type: color; to: black; startEvents: mouseleave; dur: 200";
+                                sound="src: #clicksound; on: click"
+                                >
+                                    <a-text value="ON MY WAY!" font="./assets/fonts/Exo2Bold.fnt" align="center" scale="1.5 1.5 1"></a-text>                     
+                                </a-plane>
+                            </a-plane>
+                        </a-image>
+                        <!--Reset Planet 3 after wrong answer-->
+                        <a-plane id="restartPlanet3" color="red" width="1.6" height="0.9" position="0 0 0.1"  visible="false">
+                            <a-plane color="white" width="12" height="4.6" position="0 0 -0.01"></a-plane>
+                            <a-text value="Restart" font="assets/fonts/Exo2Bold.fnt" align="center" scale="1.5 1.5 1"></a-text>
+                            <a-text value="Oh no!!\nYour answer is wrong!\nNow you have to start again." font="assets/fonts/Exo2Bold.fnt" color="red" position="0 1.5 0" align="center" scale="1.5 1.5 1"></a-text>
+                        </a-plane>
+                    </a-plane> <!-- END OF CHALLENGES-->
+                </a-image>
+                <!--                     -->
+                <!-- EARTH - END OF GAME -->
+                <!--                     -->
+                <a-image id="planetEarth" src="#earth" width="16" height="9" position="0 0 0.15" visible="false">
+                    <a-text value="You saved the Earth!" color="red" align="center" scale="4 4 1"></a-text>
+                </a-image>
+            </a-box>
+
+            </a-camera>
+            
+            <!--
+            <a-entity id="box" cursor-listener geometry="primitive: box" material="color: green" scale="5 5 0.1" position="0 0 -3"></a-entity>
+            -->
+              
+        </a-scene>
+    </body>
